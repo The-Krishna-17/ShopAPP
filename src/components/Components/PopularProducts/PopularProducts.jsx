@@ -1,5 +1,5 @@
 import React from 'react'
-import { Flex, Text, Icon, HStack, Heading, Image, Stack, Button } from '@chakra-ui/react'
+import { Flex, Text, Icon, HStack, Heading, Image, Stack, Button, SimpleGrid } from '@chakra-ui/react'
 import PopularProductData from './PopularProductData'
 
 // importing icon 
@@ -25,10 +25,10 @@ const PopularProducts = () => {
                     <Text onClick={()=>navigate('/jewelery')} cursor='pointer'>Kids</Text>
                 </Flex>
             </Flex>
-            <Flex gap="1rem" mt="2rem" flexWrap='wrap'>
+            <SimpleGrid gap="1rem" mt="2rem"  columns={{ base: 1, sm: 2, md: 3 }}>
                 {
                     PopularProductData.map((item, index)=>(
-                        <Stack key={item.id} flexShrink={1} flexGrow={1} flexBasis={{ base: '100%', sm: '48%', md: '30%', lg: '23%' }}>
+                        <Stack key={item.id}>
                             <Image src={item.img}/>
                             <Stack>
                                 <Text textStyle="xs" fontWeight="semibold">{item.productName}</Text>
@@ -40,7 +40,7 @@ const PopularProducts = () => {
                         </Stack>
                     ))
                 }
-            </Flex>
+            </SimpleGrid>
             
             <Flex mt="2rem" flexDirection="column" gap="0.5rem" alignItems="center">
                 <Text textStyle="xs">We offer a wide range of high-quality apparel to suit every style and occasion.</Text>
